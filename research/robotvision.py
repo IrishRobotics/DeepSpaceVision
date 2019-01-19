@@ -13,10 +13,11 @@ import numpy as np
 from matplotlib import pyplot as plt 
 
 # read image from file (files are in subdirectory 2019VisionImages)
-img = cv2.imread('2019VisionImages\\RocketPanelStraightDark24in.jpg', cv2.IMREAD_COLOR)
-#img = cv2.imread('2019VisionImages\\RocketPanelStraightDark96in.jpg', cv2.IMREAD_COLOR)
+#img = cv2.imread('2019VisionImages\\RocketPanelStraightDark24in.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('2019VisionImages\\RocketPanelStraightDark96in.jpg', cv2.IMREAD_COLOR)
 #img = cv2.imread('2019VisionImages\\RocketPanelAngleDark60in.jpg', cv2.IMREAD_COLOR)
 #img = cv2.imread('2019VisionImages\\RocketPanelStraight48in.jpg', cv2.IMREAD_COLOR)
+#img = cv2.imread('2019VisionImages\\CargoSideStraightDark36in.jpg', cv2.IMREAD_COLOR)
 cv2.imshow('Original Image', img)
 
 # Convert Image to HSV
@@ -25,7 +26,7 @@ imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 # Remove All color outside our green threshold tests
 # (experimentally found using multi-image.py and gui.py from https://github.com/rr1706/Multi-Thresh)
 imgGreenBW = cv2.inRange(imgHSV, np.array([60, 60, 180]), np.array([180, 255, 255]))
-#cv2.imshow('Image Green', imgGreenBW)
+cv2.imshow('Image Green', imgGreenBW)
 
 # TODO - May need more cleanup of images using techinques found in https://frc-pdr.readthedocs.io/en/latest/vision/contours.html
 
