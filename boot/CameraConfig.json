@@ -1,0 +1,91 @@
+{
+    "team": 2606,
+    "ntmode": "server",
+    "cameras": [
+        {
+            "name": "rPi Camera 0",
+            "path": "/dev/video0",
+            "pixel format": "MJPEG",
+            "width": 640,
+            "height": 480,
+            "fps": 30,
+            "brightness": 0,
+            "white balance": "auto",
+            "exposure": "auto",
+            "properties": [
+                {
+                    "name": "raw_brightness",
+                    "value": 30
+                },
+                {
+                    "name": "brightness",
+                    "value": 0
+                },
+                {
+                    "name": "raw_contrast",
+                    "value": 10
+                },
+                {
+                    "name": "contrast",
+                    "value": 100
+                },
+                {
+                    "name": "raw_saturation",
+                    "value": 200
+                },
+                {
+                    "name": "saturation",
+                    "value": 100
+                },
+                {
+                    "name": "white_balance_temperature_auto",
+                    "value": false
+                },
+                {
+                    "name": "power_line_frequency",
+                    "value": 0
+                },
+                {
+                    "name": "white_balance_temperature",
+                    "value": 2800
+                },
+                {
+                    "name": "raw_sharpness",
+                    "value": 0
+                },
+                {
+                    "name": "sharpness",
+                    "value": 0
+                },
+                {
+                    "name": "backlight_compensation",
+                    "value": 0
+                },
+                {
+                    "name": "exposure_auto",
+                    "value": 0
+                },
+                {
+                    "name": "raw_exposure_absolute",
+                    "value": 78
+                },
+                {
+                    "name": "exposure_absolute",
+                    "value": 38
+                },
+                {
+                    "name": "pan_absolute",
+                    "value": 0
+                },
+                {
+                    "name": "tilt_absolute",
+                    "value": 0
+                },
+                {
+                    "name": "zoom_absolute",
+                    "value": 0
+                }
+            ]
+        }
+    ]
+}

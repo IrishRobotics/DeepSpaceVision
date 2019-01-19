@@ -14,14 +14,28 @@ from matplotlib import pyplot as plt
 
 
 cap = cv2.VideoCapture(0)
-#Exposure
-cap.set(15,0.1)
-#Saturation
-cap.set(12,40)
-#Brightness
-cap.set(10,0.1)
-#Contrast
-cap.set(11,0)
+# Configure Camera
+# Main Settings
+cap.set(cv2.CAP_PROP_EXPOSURE, 0)
+cap.set(cv2.CAP_PROP_BRIGHTNESS, 0.0)
+cap.set(cv2.CAP_PROP_SATURATION,50)
+cap.set(cv2.CAP_PROP_CONTRAST,100)
+
+# FRAME rate/size
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+cap.set(cv2.CAP_PROP_FPS, 30)
+
+# AUTO setting SET TO OFF (DIFFRENT FOR EACH ONE)
+cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
+cap.set(cv2.CAP_PROP_AUTO_WB, 0)
+cap.set(cv2.CAP_PROP_AUTOFOCUS, False)
+cap.set(cv2.CAP_PROP_BACKLIGHT, -1.0)
+
+# EXTRA SETTING TO PLAY WITH
+cap.set(cv2.CAP_PROP_SHARPNESS,0)
+cap.set(cv2.CAP_PROP_GAIN, 0.0)
+
 
 
 while(cap.isOpened()):
@@ -31,7 +45,7 @@ while(cap.isOpened()):
 
     imgHSV = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    imgGreenBW = cv2.inRange(imgHSV, np.array([60, 60, 180]), np.array([180, 255, 255]))
+    imgGreenBW = cv2.inRange(imgHSV, np.array([30, 150, 80]), np.array([100, 255, 255]))
 
 
     imgGreenBGR = cv2.cvtColor(imgGreenBW, cv2.COLOR_GRAY2BGR)
@@ -57,12 +71,29 @@ while(cap.isOpened()):
         cv2.circle(imgGreenBGR, pt, 3, (255, 0, 0), 3)
         points.append(pt)
 
+    if len(points) == 2:
+
+        pt1 = points[1]
+        pt2 = points[0]
+        x = pt1[0] + ((pt2[0] - pt1[0]) / 2)
+        y = pt1[1] + ((pt2[1] - pt1[1]) / 2)
+        center = (int(x), int(y))
+
+        # print points, draw as 3 pixel wide 3 pixel thick circle in red 
+        print( f'left point at {pt1}' )
+        print( f'right point at {pt2}' )
+        print( f'center is {center}')
+        cv2.circle(imgGreenBGR, center, 3, (0, 0, 255), 3)
+
+
     # Display the resulting frame
     cv2.imshow('Frame', imgGreenBGR)
-    cv2.imshow('Frame2',imgGreenBW )
+    #Frame without centerpoints cv2.imshow('Frame2',imgGreenBW )
     cv2.imshow('display',frame)
-    cv2.imshow('displayConvtoHSV',imgHSV)
-    
+    #cv2.imshow('displayConvtoHSV',imgHSV)
+
+    #TODO REMEMBER TO REMOVE KEY PRESS AND SEND NETWORKTABLES HERE
+
     # Press Q on keyboard to  exit
     if cv2.waitKey(25) & 0xFF == ord('q'):
       break

@@ -26,7 +26,7 @@ imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 # Remove All color outside our green threshold tests
 # (experimentally found using multi-image.py and gui.py from https://github.com/rr1706/Multi-Thresh)
 imgGreenBW = cv2.inRange(imgHSV, np.array([60, 60, 180]), np.array([180, 255, 255]))
-#cv2.imshow('Image Green', imgGreenBW)
+cv2.imshow('Image Green', imgGreenBW)
 
 # TODO - May need more cleanup of images using techinques found in https://frc-pdr.readthedocs.io/en/latest/vision/contours.html
 
