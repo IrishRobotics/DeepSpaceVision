@@ -10,14 +10,15 @@
 
 import cv2
 import numpy as np
+import math
 from matplotlib import pyplot as plt 
 
 
 cap = cv2.VideoCapture(0)
 # Configure Camera
 # Main Settings
-cap.set(cv2.CAP_PROP_EXPOSURE, 0)
-cap.set(cv2.CAP_PROP_BRIGHTNESS, 0.0)
+cap.set(cv2.CAP_PROP_EXPOSURE, -8) # -8 is Around 6 ms exposure aparently
+cap.set(cv2.CAP_PROP_BRIGHTNESS, 0)
 cap.set(cv2.CAP_PROP_SATURATION,50)
 cap.set(cv2.CAP_PROP_CONTRAST,100)
 
@@ -36,7 +37,8 @@ cap.set(cv2.CAP_PROP_BACKLIGHT, -1.0)
 cap.set(cv2.CAP_PROP_SHARPNESS,0)
 cap.set(cv2.CAP_PROP_GAIN, 0.0)
 
-
+pictureCenter = (319.5,239.5)
+focalLength = 713.582
 
 while(cap.isOpened()):
   # Capture frame-by-frame
@@ -84,6 +86,12 @@ while(cap.isOpened()):
         print( f'right point at {pt2}' )
         print( f'center is {center}')
         cv2.circle(imgGreenBGR, center, 3, (0, 0, 255), 3)
+
+        #Angle to Target
+        targetRadian = math.atan((center[0]-pictureCenter[0])/focalLength)
+        targetAngle = math.degrees(targetRadian)
+        print( f'angle is {targetAngle}')
+
 
 
     # Display the resulting frame
