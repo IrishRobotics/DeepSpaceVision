@@ -4,9 +4,13 @@ Messages
 
     Message 1 - Vision Target Found
         Format: 
-            Message Id:         int (4 bytes) should be a 1
-            Horizontal Angle:   float (4 bytes)
-            Target Distance:    float (4 bytes)
+            Message Id:         int     (4 bytes) should be a 1
+            Horizontal Angle:   double  (8 bytes)
+            Target Distance:    double  (8 bytes)
+            Time Hour:          short   (2 bytes)
+            Time Minute:        short   (2 bytes)
+            Time Second:        short   (2 bytes)
+            Time MicroSecond:   int     (4 bytes)
     
     Message 2 - No Vision Target Found
         Format: 

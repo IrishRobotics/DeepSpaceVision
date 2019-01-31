@@ -21,7 +21,7 @@ print(f'RoboRio Simulator')
 
 imageFinal = None
 
-Host = '127.0.0.1' # CHANGE THIS to roboRio Network Ip address
+Host = '0.0.0.0' # CHANGE THIS to roboRio Network Ip address
 Port = 5804
 
 # try:
@@ -46,13 +46,20 @@ while True:
         #print(f'{messageId}')
         
         if messageId == 1:           
-            data = conn.recv(16)
-            messageType1 = struct.unpack('dd', data) 
+            data = conn.recv(28)
+            messageType1 = struct.unpack('!ddhhhi', data) 
             
             targetAngle = messageType1[0]
             targetDistance = messageType1[1]
+            timeHour = messageType1[2]
+            timeMinute = messageType1[3]
+            timeSecond = messageType1[4]
+            timeMicroSecond = messageType1[5]
 
-            print(f'got vision target found {targetAngle} {targetDistance}')
+
+
+
+            print(f'got vision target found {targetAngle} {targetDistance} {timeHour}:{timeMinute}:{timeSecond}.{timeMicroSecond}')
 
         elif messageId == 2:
             print('got no vision target found')

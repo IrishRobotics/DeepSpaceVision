@@ -6,8 +6,8 @@
             "name": "rPi Camera 0",
             "path": "/dev/video0",
             "pixel format": "MJPEG",
-            "width": 640,
-            "height": 480,
+            "width": 320,
+            "height": 240,
             "fps": 30,
             "brightness": 0,
             "white balance": "auto",
@@ -19,7 +19,7 @@
                 },
                 {
                     "name": "brightness",
-                    "value": 0
+                    "value": 50
                 },
                 {
                     "name": "raw_contrast",
@@ -63,15 +63,7 @@
                 },
                 {
                     "name": "exposure_auto",
-                    "value": 0
-                },
-                {
-                    "name": "raw_exposure_absolute",
-                    "value": 78
-                },
-                {
-                    "name": "exposure_absolute",
-                    "value": 38
+                    "value": 1
                 },
                 {
                     "name": "pan_absolute",
