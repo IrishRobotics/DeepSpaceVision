@@ -66,6 +66,10 @@
                     "value": 1
                 },
                 {
+                    "name": "exposure_absolute",
+                    "value": 20
+                },
+                {
                     "name": "pan_absolute",
                     "value": 0
                 },

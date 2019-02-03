@@ -29,7 +29,7 @@ print("Time Now {0}:{1}:{2}.{3}".format(tnow.hour, tnow.minute, tnow.second, tno
 print('Video Tracking DeepSpace:2606')
 
 editorMode = False # False when running on Rpi 
-sendContourProcessedImage  = False 
+sendContourProcessedImage  = True 
 sendImageFrameRate = 30
 
 Host = '192.168.1.114' # CHANGE THIS to roboRio Network Ip address
@@ -296,5 +296,4 @@ if editorMode == True:
     # Wait for a key press and close all windows
     cv2.waitKey(0)
     cv2.destroyAllWindows() 
-
 
