@@ -29,7 +29,7 @@ print("Time Now {0}:{1}:{2}.{3}".format(tnow.hour, tnow.minute, tnow.second, tno
 print('Video Tracking DeepSpace:2606')
 
 editorMode = False # False when running on Rpi 
-sendContourProcessedImage  = True 
+sendContourProcessedImage  = False 
 sendImageFrameRate = 30
 
 Host = '192.168.1.114' # CHANGE THIS to roboRio Network Ip address
@@ -160,8 +160,8 @@ cap = startCamera(cameraConfigs[0])
 
 
 
-#pictureCenter = (319.5,239.5)
-pictureCenter = (159.5, 119.5)
+pictureCenter = (319.5,239.5)
+#pictureCenter = (159.5, 119.5)
 focalLength = 713.582
 exposureResetCounter = 0
 imageSendCounter = 0
@@ -256,8 +256,13 @@ while(True):
         if editorMode == True: 
             print( 'angle is {}'.format(targetAngle))
         
+        targetDistanceFromCentersIRL = 29.5
+        distanceBetweenTapes = pt2[0] - pt1[0]
+        targetDistanceInCm = 0
+        if targetDistanceFromCentersIRL > 0:
+            targetDistanceInCm = abs((targetDistanceFromCentersIRL * focalLength)/distanceBetweenTapes)
         
-        message = struct.pack('!iddhhhi', 1, targetAngle, 0.0, tnow.hour, tnow.minute, tnow.second, tnow.microsecond)
+        message = struct.pack('!iddhhhi', 1, targetAngle, int(targetDistanceInCm), tnow.hour, tnow.minute, tnow.second, tnow.microsecond)
         sendSocket.send(message)
 
     else:

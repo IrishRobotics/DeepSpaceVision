@@ -46,7 +46,7 @@ while True:
         #print(f'{messageId}')
         
         if messageId == 1:           
-            data = conn.recv(28)
+            data = conn.recv(26)
             messageType1 = struct.unpack('!ddhhhi', data) 
             
             targetAngle = messageType1[0]
