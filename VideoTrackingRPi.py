@@ -18,7 +18,7 @@ import sys
 import struct
 import json
 import time
-import sys
+#import sys why was this here
 import datetime
 from cscore import CameraServer, VideoSource
 from networktables import NetworkTablesInstance
